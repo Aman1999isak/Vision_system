@@ -20,7 +20,7 @@ namespace ConsoleApp4
         private static Tag hemlockTag;
         private static Tag japaneseCherryTag;
         private static Iteration iteration;
-        private static string publishedModelName = "BallModel1";
+        private static string publishedModelName = "BallModel2"; //Denne finner vi under performace/iteration n/publish (Vi velger navn når vi publisher)
         private static MemoryStream testImage;
         static string projectID = "d2266057-b9f2-4d8e-a4a8-14fe78ac2edc";
 
@@ -44,8 +44,10 @@ namespace ConsoleApp4
         {
 
             // Make a prediction against the new project
+            Console.WriteLine("Please provide path for the image");
+            string imageLocation = Console.ReadLine();
+            var imageFile = imageLocation;
             Console.WriteLine("Making a prediction:");
-            var imageFile = @"\Skjermbilde444.png";
             using (var stream = File.OpenRead(imageFile))
             {
                 var result = predictionApi.DetectImage(project.Id, publishedModelName, stream);
