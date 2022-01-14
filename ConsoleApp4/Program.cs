@@ -3,11 +3,13 @@ using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training.Models;
 using System;
+using OpenCvSharp;
 
 namespace ConsoleApp4
 {
     internal class Program
     {
+
         private static string modelAPI = "https://visionoppgave-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/d2266057-b9f2-4d8e-a4a8-14fe78ac2edc/detect/iterations/BallModel1/image";
         private static string predictionEndpoint = "https://visionoppgave-prediction.cognitiveservices.azure.com/";
         private static string predictionKey = "33e8276cbca445e193a916f549e95b2d";
@@ -27,17 +29,17 @@ namespace ConsoleApp4
 
         static void Main(string[] args)
         {
-           string modelAPI = "https://visionoppgave-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/d2266057-b9f2-4d8e-a4a8-14fe78ac2edc/detect/iterations/BallModel1/image";
-           string predictionEndpoint = "https://visionoppgave-prediction.cognitiveservices.azure.com/";
-           string predictionKey = "33e8276cbca445e193a916f549e95b2d";
-           string predictionResourceId = "/subscriptions/f417f081-089c-4c18-a54b-16aac0203a3c/resourceGroups/Hjemme-nettverk/providers/Microsoft.CognitiveServices/accounts/Visionoppgave";
-           string trainingEndpoint = "https://visionoppgave.cognitiveservices.azure.com/";
-           string trainingKey = "987f7ea480f54f72929f0599704562d0";
-           CustomVisionTrainingClient TrainingApi = AuthenticateTraining(trainingEndpoint, trainingKey,predictionKey);
-           CustomVisionPredictionClient predictionApi = AuthenticatePrediction(predictionEndpoint, predictionKey);
-           var pros = TrainingApi.GetProjects();
-           Project pro = pros[0];
-           TestIteration(predictionApi, pro);
+            string modelAPI = "https://visionoppgave-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/d2266057-b9f2-4d8e-a4a8-14fe78ac2edc/detect/iterations/BallModel1/image";
+            string predictionEndpoint = "https://visionoppgave-prediction.cognitiveservices.azure.com/";
+            string predictionKey = "33e8276cbca445e193a916f549e95b2d";
+            string predictionResourceId = "/subscriptions/f417f081-089c-4c18-a54b-16aac0203a3c/resourceGroups/Hjemme-nettverk/providers/Microsoft.CognitiveServices/accounts/Visionoppgave";
+            string trainingEndpoint = "https://visionoppgave.cognitiveservices.azure.com/";
+            string trainingKey = "987f7ea480f54f72929f0599704562d0";
+            CustomVisionTrainingClient TrainingApi = AuthenticateTraining(trainingEndpoint, trainingKey, predictionKey);
+            CustomVisionPredictionClient predictionApi = AuthenticatePrediction(predictionEndpoint, predictionKey);
+            var pros = TrainingApi.GetProjects();
+            Project pro = pros[0];
+            TestIteration(predictionApi, pro);
         }
 
         static private void TestIteration(CustomVisionPredictionClient predictionApi, Project project)
@@ -60,6 +62,8 @@ namespace ConsoleApp4
             }
             Console.ReadKey();
         }
+
+
         static private CustomVisionTrainingClient AuthenticateTraining(string endpoint, string trainingKey, string predictionKey)
         {
             // Create the Api, passing in the training key
