@@ -45,7 +45,7 @@ namespace ConsoleApp4
 
             // Make a prediction against the new project
             Console.WriteLine("Making a prediction:");
-            var imageFile = @"\bill.png";
+            var imageFile = @"\Skjermbilde444.png";
             using (var stream = File.OpenRead(imageFile))
             {
                 var result = predictionApi.DetectImage(project.Id, publishedModelName, stream);
