@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4
 {
-    internal class Ball_detaction
+    public class Ball_detaction
     {
         string modelAPI = "https://visionoppgave-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/d2266057-b9f2-4d8e-a4a8-14fe78ac2edc/detect/iterations/BallModel1/image";
         string predictionEndpoint = "https://visionoppgave-prediction.cognitiveservices.azure.com/";
