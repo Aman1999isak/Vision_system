@@ -24,7 +24,7 @@ namespace ConsoleApp4
 
             }
 
-
+            Console.ReadLine();
         }
 
     }

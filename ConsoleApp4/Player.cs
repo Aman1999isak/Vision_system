@@ -11,6 +11,10 @@ namespace ConsoleApp4
         public int playerID { get; set; }
         public string playerName { get; set; }
 
+        public bool solidball { get; set; }
+
+        public bool halfball { get; set; }
+        public bool playerTurn { get; set; }
         public Player()
         {
 

@@ -37,7 +37,7 @@ namespace ConsoleApp4
 
             // Make a prediction against the new project
             Console.WriteLine("Please provide path for the image");
-            string imageLocation = "bill.png";
+            string imageLocation = "Skjermbilde.png";
             var imageFile = imageLocation;
             Console.WriteLine("Making a prediction:");
             
@@ -49,10 +49,10 @@ namespace ConsoleApp4
                 // Loop over each prediction and write out the results
                 foreach (var c in result.Predictions)
                 {
-                    if (c.TagName != b)
+                    if (c.TagName != b && c.Probability > 0.9)
                     {
                        //Console.WriteLine($"\t{c.TagName}: {c.Probability:P1} [ {c.BoundingBox.Left}, {c.BoundingBox.Top}, {c.BoundingBox.Width}, {c.BoundingBox.Height} ]");
-                       
+                        
                         balls[loop] = c.TagName;
                         loop++;
                         b = c.TagName;
